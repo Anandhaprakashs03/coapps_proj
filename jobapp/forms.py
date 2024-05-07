@@ -6,7 +6,16 @@ from django.contrib import auth
 from jobapp.models import *
 from ckeditor.widgets import CKEditorWidget
 
+from django import forms
+from .models import Profile
 
+class ProfileUpdateForm(forms.ModelForm):
+    skills = forms.CharField(max_length=100, required=False, widget=forms.TextInput(attrs={'placeholder': 'Add skills'}))
+    resume = forms.FileField(required=False)
+
+    class Meta:
+        model = Profile
+        fields = ['gender', 'skills', 'resume']
     
 
 class JobForm(forms.ModelForm):
@@ -63,12 +72,10 @@ class JobForm(forms.ModelForm):
 
     class Meta:
         model = Job
-
         fields = [
             "title",
             "location",
             "job_type",
-            "category",
             "salary",
             "description",
             "tags",
@@ -99,9 +106,6 @@ class JobForm(forms.ModelForm):
             
             job.save()
         return job
-
-
-
 
 class JobApplyForm(forms.ModelForm):
     class Meta:
@@ -210,3 +214,11 @@ class JobEditForm(forms.ModelForm):
             job.save()
         return job
 
+class ProfileUpdateForm(forms.ModelForm):
+    gender = forms.ChoiceField(choices=(('M', 'Male'), ('F', 'Female')), widget=forms.RadioSelect)
+    skills = forms.CharField(max_length=100, required=False, widget=forms.TextInput(attrs={'placeholder': 'Add skills'}))
+    resume = forms.FileField(required=False)
+
+    class Meta:
+        model = Profile
+        fields = ['gender', 'skills', 'resume']

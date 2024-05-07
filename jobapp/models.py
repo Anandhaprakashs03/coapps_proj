@@ -13,6 +13,11 @@ JOB_TYPE = (
     ('2', "Part time"),
     ('3', "Internship"),
 )
+CATEGORY=(
+     ('1', "Full time"),
+    ('2', "Part time"),
+    ('3', "Internship"),
+)
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
@@ -29,7 +34,7 @@ class Job(models.Model):
     tags = TaggableManager()
     location = models.CharField(max_length=300)
     job_type = models.CharField(choices=JOB_TYPE, max_length=1)
-    category = models.ForeignKey(Category,related_name='Category', on_delete=models.CASCADE)
+    category = models.CharField(choices=CATEGORY,max_length=1)
     salary = models.CharField(max_length=30, blank=True)
     company_name = models.CharField(max_length=300)
     company_description = RichTextField(blank=True, null=True)
@@ -67,3 +72,12 @@ class BookmarkJob(models.Model):
 
     def __str__(self):
         return self.job.title
+    
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    gender = models.CharField(max_length=1, choices=(('M', 'Male'), ('F', 'Female')))
+    skills = models.CharField(max_length=100, blank=True)
+    resume = models.FileField(upload_to='resumes/', blank=True)
+
+    def __str__(self):
+        return self.user.username + "'s Profile"

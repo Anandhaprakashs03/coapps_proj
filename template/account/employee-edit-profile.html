@@ -42,7 +42,7 @@
         </div>
         {% endfor %}
         {% endif %}
-        <form method="POST" class="p-4 border rounded">
+        <form method="POST" class="p-4 border rounded" enctype="multipart/form-data">
           {% csrf_token %}
           {% for field in form %}
           {% if field.name == 'gender' %}
@@ -58,6 +58,24 @@
                   {% if field.value == 'F' %} checked {% endif %}>
                 <label class="form-check-label" for="female">Female</label>
               </div>
+            </div>
+          </div>
+
+          {% elif field.name == 'skills' %}
+          <div class="row form-group">
+            <div class="col-md-12 mb-3 mb-md-0">
+              <label class="text-black" for="id_{{ field.name }}">{{ field.label }}</label>
+              <input type="{{ field.field.widget.input_type }}" class="form-control" name="{{ field.name }}"
+                id="id_{{ field.name }}" value="{{ field.value }}"
+                placeholder="{{ field.field.widget.attrs.placeholder }}">
+            </div>
+          </div>
+
+          {% elif field.name == 'resume' %}
+          <div class="row form-group">
+            <div class="col-md-12 mb-3 mb-md-0">
+              <label class="text-black" for="id_{{ field.name }}">{{ field.label }}</label>
+              <input type="file" class="form-control-file" name="{{ field.name }}" id="id_{{ field.name }}">
             </div>
           </div>
 

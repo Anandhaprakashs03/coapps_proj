@@ -102,7 +102,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'coapps_proj', 
+        'NAME': 'coapps_proj1', 
         'USER': 'root',  
         'PASSWORD': '03042002',  
         'HOST': 'localhost',
@@ -115,22 +115,6 @@ INTERNAL_IPS = [
     "127.0.0.1",
     # ...
 ]
-# CACHES
-# ------------------------------------------------------------------------------
-
-# CACHES = {
-#     "default": {
-#         'BACKEND': 'django.core.cache.backends.redis.RedisCache',
-#         'LOCATION': 'redis://127.0.0.1:6379',
-#         "OPTIONS": {
-#             "CLIENT_CLASS": "django_redis.client.DefaultClient"
-#         },
-#         "KEY_PREFIX": "config"
-#     }
-# }
-
-# Password validation
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -203,3 +187,6 @@ django_heroku.settings(locals())
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+EMAIL_BACKEND = 'sendgrid_backend.SendgridBackend'
+
+SENDGRID_API_KEY = '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'
