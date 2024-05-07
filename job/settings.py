@@ -186,7 +186,3 @@ MESSAGE_TAGS = {
 django_heroku.settings(locals())
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-EMAIL_BACKEND = 'sendgrid_backend.SendgridBackend'
-
-SENDGRID_API_KEY = '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'
