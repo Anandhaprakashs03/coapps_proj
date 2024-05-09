@@ -22,6 +22,12 @@ from django.core.paginator import Paginator
 from django.shortcuts import render
 from .models import Job
 from account.models import User
+from django.shortcuts import render
+from openai import ChatCompletion
+import openai
+
+def chatbot_view(request):
+    return render(request, 'chatbot.html')
 
 def home_view(request):
     published_jobs = Job.objects.filter(is_published=True).order_by('-timestamp')
