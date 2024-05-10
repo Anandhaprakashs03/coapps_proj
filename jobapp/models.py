@@ -13,17 +13,9 @@ JOB_TYPE = (
     ('2', "Part time"),
     ('3', "Internship"),
 )
-CATEGORY=(
-     ('1', "Full time"),
-    ('2', "Part time"),
-    ('3', "Internship"),
-)
 
-class Category(models.Model):
-    name = models.CharField(max_length=50)
 
-    def __str__(self):
-        return self.name
+
     
 
 class Job(models.Model):
@@ -34,7 +26,6 @@ class Job(models.Model):
     tags = TaggableManager()
     location = models.CharField(max_length=300)
     job_type = models.CharField(choices=JOB_TYPE, max_length=1)
-    category = models.CharField(choices=CATEGORY,max_length=1)
     salary = models.CharField(max_length=30, blank=True)
     company_name = models.CharField(max_length=300)
     company_description = RichTextField(blank=True, null=True)

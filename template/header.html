@@ -8,7 +8,7 @@
     /* Example: */
     body {
       font-family: Arial, sans-serif;
-      color: #333; /* Default text color */
+      color: #ff0000; /* Default text color */
     }
 
     .site-logo a {
@@ -83,10 +83,9 @@
           
               <nav class="mx-auto site-navigation">
                 <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
-                    <li><a href="{% url 'jobapp:home' %}" class="nav-link" onmouseover="this.style.color='#096ae1';" onmouseout="this.style.color='#2E86C1';" onfocus="this.style.color='#096ae1';" onblur="this.style.color='#2E86C1';">Home</a></li>
-                    <li><a href="#" onmouseover="this.style.color='#096ae1';" onmouseout="this.style.color='#2E86C1';" onfocus="this.style.color='#096ae1';" onblur="this.style.color='#2E86C1';">About</a></li>
-                    <li><a href="{% url 'jobapp:job-list' %}" onmouseover="this.style.color='#096ae1';" onmouseout="this.style.color='#2E86C1';" onfocus="this.style.color='#096ae1';" onblur="this.style.color='#2E86C1';">Job Listings</a></li>
-                    <li><a href="#" onmouseover="this.style.color='#096ae1';" onmouseout="this.style.color='#2E86C1';" onfocus="this.style.color='#096ae1';" onblur="this.style.color='#2E86C1';">Contact</a></li>
+                    <li><a href="{% url 'jobapp:home' %}" class="nav-link text-white" onmouseover="this.style.color='#096ae1';" onmouseout="this.style.color='#2E86C1';" onfocus="this.style.color='#096ae1';" onblur="this.style.color='#2E86C1';">Home</a></li>
+                    <li><a href="#" onmouseover="this.style.color='#096ae1';" class="text-white" onmouseout="this.style.color='#2E86C1';" onfocus="this.style.color='#096ae1';" onblur="this.style.color='#2E86C1';">About</a></li>
+                    <li><a href="#" onmouseover="this.style.color='#096ae1';" class="text-white" onmouseout="this.style.color='#2E86C1';" onfocus="this.style.color='#096ae1';" onblur="this.style.color='#2E86C1';">Contact</a></li>
                 </ul>
             </nav>
             
@@ -95,37 +94,37 @@
                       <div class="site-navigation fix">
                           <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
                               {% if user.is_authenticated and user.role == 'employer'  %}
-                              <a href="{% url 'jobapp:create-job' %}" class="js-clone-nav pr-3 btn btn-outline-primary border-width-2 d-none d-lg-inline-block" style="color: #333;"><span class="mr-2 icon-add"></span>Publish Job</a>
+                              <a href="{% url 'jobapp:create-job' %}" class="js-clone-nav pr-3 btn text-white border-width-2 d-none d-lg-inline-block" style="color: #333; box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.9);"><span class="mr-2 icon-add"></span>Publish Job</a>
                               <li class="pr-3 has-children">
-                                  <a style="color: #333;">Dashboard</a>
+                                  <a class="text-white">Dashboard</a>
                                   <ul class="dropdown">
-                                      <li><a href="{% url 'jobapp:dashboard' %}" style="color: #333;">Dashboard</a></li>
-                                      <li><a href="{% url 'account:logout' %}" style="color: #333;">Logout</a></li>
+                                      <li><a href="{% url 'jobapp:dashboard' %}" class="text-black">Dashboard</a></li>
+                                      <li><a href="{% url 'account:logout' %}" class="text-black">Logout</a></li>
                                   </ul>
                               </li>
                               {% elif user.is_authenticated %}
-                              <li class="pr-3 has-children">
-                                  <a style="color: #333;">Profile</a>
+                              <li class="pr-3 has-children" class="text-white">
+                                  <a class="text-white">Profile</a>
                                   <ul class="dropdown">
-                                      <li><a href="{% url 'account:edit-profile' request.user.id %}" style="color: #333;">Edit Settings</a></li>
+                                      <li><a href="{% url 'account:edit-profile' request.user.id %}" class="text-black">Edit Settings</a></li>
                                   </ul>
                               </li>
-                              <li class="pr-3 has-children">
-                                  <a style="color: white;">Dashboard</a>
+                              <li class="pr-3 has-children text-white">
+                                  <a style="color: rgb(0, 0, 0);" class="text-white">Dashboard</a>
                                   <ul class="dropdown">
-                                      <li><a href="{% url 'jobapp:dashboard' %}" style="color: white;">Dashboard</a></li>
-                                      <li><a href="{% url 'account:logout' %}" style="color: white;">Logout</a></li>
+                                      <li><a href="{% url 'jobapp:dashboard' %}" style="color: rgb(0, 0, 0);">Dashboard</a></li>
+                                      <li><a href="{% url 'account:logout' %}" style="color: rgb(0, 0, 0);">Logout</a></li>
                                   </ul>
                               </li>
                               {% else %}
                               <li class="pr-3 has-children">
-                                <a style="background-color: #1176e2; color: #fff; border-radius: 8px; padding: 10px 20px;">Register</a>
+                                <a style="background-color: #ffffff; color: #fff; border-radius: 8px; padding: 10px 20px;" class="text-black">Register</a>
                                 <ul class="dropdown">
                                     <li><a href="{% url 'account:employer-registration' %}" style="color: rgb(19, 18, 18);">Employer</a></li>
                                     <li><a href="{% url 'account:employee-registration' %}" style="color: rgb(36, 35, 35);">Employee</a></li>
                                 </ul>
                             </li>
-                            <a href="{% url 'account:login' %}" class="js-clone-nav btn btn-primary border-width-2 d-none d-lg-inline-block ov-fix" style="background-color: #0fa1f0; padding: 18px; color: #fff;"><span class="mr-2 icon-lock_outline"></span>Login</a>
+                            <a href="{% url 'account:login' %}" class="js-clone-nav btn btn-primary border-width-2 d-none d-lg-inline-block ov-fix text-black" style="background-color: #ffffff; padding: 18px; border-color: #333;"><span class="mr-2 icon-lock_outline"></span>Login</a>
                             {% endif %}
                           </ul>
                       </div>
@@ -136,6 +135,5 @@
       </div>
   </header>
   </div>
-
 </body>
 </html>

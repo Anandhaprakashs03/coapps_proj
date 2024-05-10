@@ -1,12 +1,26 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block content %}
 
+<script>
+  var text = "Ultimate Pathway to Your Dream Career";
+  var speed = 100; // Speed of typing animation in milliseconds
+
+  function typeWriter() {
+      var i = 0;
+      var interval = setInterval(function() {
+          document.getElementById("typing-text").textContent += text.charAt(i);
+          i++;
+          if (i > text.length) {
+              clearInterval(interval);
+          }
+      }, speed);
+  }
+
+  typeWriter(); // Start the typing animation
+</script>
 <!-- HOME -->
 <section class="home-section section-hero overlay bg-image" style="background-image: url('{% static 'images/hero_1.jpg' %}');" id="home-section">
-
-
   <div class="container">
     <div class="row align-items-center justify-content-center">
       <div class="col-md-12">
@@ -14,41 +28,19 @@
           <h1 class="text-white font-weight-bold" style="color: #f5f2f2; font-weight: bold; overflow: hidden;">
           <span id="typing-text" style="display: inline-block;"></span>
         </h1>
-        
-        <script>
-            var text = "Ultimate Pathway to Your Dream Career";
-            var speed = 100; // Speed of typing animation in milliseconds
-        
-            function typeWriter() {
-                var i = 0;
-                var interval = setInterval(function() {
-                    document.getElementById("typing-text").textContent += text.charAt(i);
-                    i++;
-                    if (i > text.length) {
-                        clearInterval(interval);
-                    }
-                }, speed);
-            }
-        
-            typeWriter(); // Start the typing animation
-        </script>
-        
-
-
           <p style="color: #4b7eb7; font-weight: 700;">உழைப்புப் புழுவினை வாழ்த்தும்</p>
         </div>
+        <div>
+          {% if user.is_authenticated and user.role == 'employee'  %}
         <form method="GET" action="{% url 'jobapp:search_result' %}" class="search-jobs-form">
           {% include 'jobapp/search.html' %}
         </form>
+        {% endif %}
+        </div>
       </div>
     </div>
   </div>
-  <a href="#next" class="scroll-button smoothscroll">
-    <span class=" icon-keyboard_arrow_down"></span>
-  </a>
-
 </section>
-
 <section class="overlay-primary fixed overlay" id="next"
   style="background-image: url('{% static 'images/hero_1.jpg' %}');">
   <div class="container">
@@ -59,7 +51,6 @@
       </div>
     </div>
     <div class="row pb-0 block__19738 section-counter">
-
       <div class="col-6 col-md-6 col-lg-3  mb-lg-0">
         <div class="d-flex align-items-center justify-content-center mb-2">
           <strong class="number" data-number="{{ total_candidates }}">0</strong>
@@ -91,7 +82,7 @@
   </div>
 </section>
 
-<section id="ajax_listing_paginattion" class="site-section">
+<section id="ajax_listing_paginattion">
   <div class="container">
     {% if page_obj %}
     <div class="row  justify-content-center">
@@ -99,8 +90,6 @@
         <h2 class="section-title">{{ total_jobs }} Job Listed</h2>
       </div>
     </div>
-
-
     <ul id="job" class="job-listings">
       {% for job in page_obj %}
       <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
@@ -134,92 +123,12 @@
             {% endif %}
           </div>
         </div>
-
       </li>
       {% endfor %}
     </ul>
-    {% include 'jobapp/paginator.html' %}
   </div>
   {% endif %}
 </section>
-<h1 class="text-center" style="font-family: 'Arial', sans-serif; color: #3366cc; font-size: 24px; font-weight: bold; text-align: center;">Make each day your masterpiece</h1>
-
-<section class="py-5 overlay-primary fixed overlay" style="background-image: url('{% static 'images/hero_1.jpg' %}');">
-  <div class="container">
-    {% if request.user.role == "employer" %}
-    <div class="row align-items-center">
-      <div class="col-md-8">
-        <h2 class="text-white">Want To Hire?</h2>
-        <p class="mb-0 text-white lead">Lorem ipsum dolor sit amet consectetur adipisicing elit tempora adipisci
-          impedit.</p>
-      </div>
-      <div class="col-md-3 ml-auto">
-        <a href="{% url 'jobapp:create-job' %}" class="btn btn-warning btn-block btn-lg">Post Your Job</a>
-      </div>
-    </div>
-    {% elif request.user.role == "employee" %}
-    <div class="row align-items-center">
-      <div class="col-md-8">
-        <h2 class="text-white">Looking For A Job?</h2>
-        <p class="mb-0 text-white lead">உழைப்பே உயர்வு</p>
-      </div>
-      <div class="col-md-3 ml-auto">
-        <a href="{% url 'jobapp:job-list' %}" class="btn btn-warning btn-block btn-lg">Job List</a>
-      </div>
-    </div>
-    {% else %}
-    <div class="row align-items-center">
-      <div class="col-md-8">
-        <h2 class="text-white">Looking For A Job?</h2>
-        <p class="mb-0 text-white lead">உழைப்பே உயர்வு</p>
-      </div>
-      <div class="col-md-3 ml-auto">
-        <a href="{% url 'account:employee-registration' %}" class="btn btn-warning btn-block btn-lg">Sign Up</a>
-      </div>
-    </div>
-    {% endif %}
-  </div>
-</section>
-<section class="bg-light pt-5 testimony-full">
-
-  <div class="owl-carousel single-carousel">
-
-
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 align-self-center text-center text-lg-left">
-          <blockquote>
-            <p>&ldquo;Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. And the only way to do great work is to love what you do. If you haven't found it yet, 
-              keep looking. &rdquo;</p>
-            <p><cite> &mdash; STEVE JOBS</cite></p>
-          </blockquote>
-        </div>
-        <div class="col-lg-6 align-self-end text-center text-lg-right">
-          <img src="{% static 'images/steve_jobs1.jpeg' %}"  alt="steve " class="img-fluid mb-3">
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 align-self-center text-center text-lg-left">
-          <blockquote>
-            <p>&ldquo;The biggest risk is not taking any risk. In a world that's changing really quickly, 
-              the only strategy that is guaranteed to fail is not taking risks..&rdquo;</p>
-            <p><cite> &mdash; Mark Zuckerberg</cite></p>
-          </blockquote>
-        </div>
-        <div class="col-lg-6 align-self-end text-center text-lg-right">
-          <img src="{% static 'images/mark1.jpg' %}" alt="Steve Jobs"  class="img-fluid mb-0">
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-</section>
-
-
 {% endblock %}
 {% block extra_scripts %}
 <script>

@@ -91,7 +91,6 @@ def create_job_View(request):
     form = JobForm(request.POST or None)
 
     user = get_object_or_404(User, id=request.user.id)
-    categories = Category.objects.all()
 
     if request.method == 'POST':
 
@@ -109,8 +108,7 @@ def create_job_View(request):
                                     }))
 
     context = {
-        'form': form,
-        'categories': categories
+        'form': form
     }
     return render(request, 'jobapp/post-job.html', context)
 
@@ -376,7 +374,6 @@ def job_edit_view(request, id=id):
     """
 
     job = get_object_or_404(Job, id=id, user=request.user.id)
-    categories = Category.objects.all()
     form = JobEditForm(request.POST or None, instance=job)
     if form.is_valid():
         instance = form.save(commit=False)
@@ -390,7 +387,6 @@ def job_edit_view(request, id=id):
     context = {
 
         'form': form,
-        'categories': categories
     }
 
     return render(request, 'jobapp/job-edit.html', context)

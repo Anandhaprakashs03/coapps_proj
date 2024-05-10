@@ -4,15 +4,15 @@
 {% block content %}
 
 
-<section class="site-section" style="background-image: url('{% static 'images/bg.jpg' %}');">
+<section class="site-section " style="background-image: url('{% static 'images/bg_author.jpg' %}');">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 mb-5">
+            <div class="col-lg-12">
                 {% include 'messages.html' %}
 
-                <div class="card">
+                <div class="card mt-5" style="background-image: url('{% static 'images/bg_author.jpg' %}');">
                     {% if user.role == "employer" %}
-                    <h5 class="card-header text-center">My All Job</h5>
+                    <h5 class="card-header text-center text-white">Posted Jobs</h5>
                     {% if jobs %}
                     <table class="table text-center mt-5">
                         <thead class="thead-dark">
@@ -25,7 +25,7 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="text-white">
                             {% for job in jobs %}
                             <tr id="row_{{ job.id }}">
                                 <td class="text-left"><a href="{% url 'jobapp:single-job' job.id %}">{{ job.title }}</a></td>
@@ -106,7 +106,7 @@
                       </ul>
                       <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            <h5 class="card-header text-center">Bookmarked Posts</h5>
+                            <h5 class="card-header text-center text-white">Bookmarked Posts</h5>
                             {% if savedjobs %}
                             <table class="table text-center mt-5">
                                 <thead class="thead-dark">
@@ -135,7 +135,7 @@
                             {% endif %}
                         </div>
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            <h5 class="card-header text-center">Applied Posts</h5>
+                            <h5 class="card-header text-center text-white">Applied Posts</h5>
                             {% if appliedjobs %}
                             <table class="table text-center mt-5">
                                 <thead class="thead-dark">

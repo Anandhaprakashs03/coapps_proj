@@ -6,24 +6,8 @@
 <!-- HOME -->
 
 
-<section class="section-hero overlay inner-page bg-image"
-  style="background-image: url('{% static 'images/hero_1.jpg' %}');" id="home-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-7">
-        <h1 class="text-white font-weight-bold">{{ job.title }}</h1>
-        <div class="custom-breadcrumbs">
-          <a href="{% url 'jobapp:home' %}">Home</a> <span class="mx-2 slash">/</span>
-          <a href="{% url 'jobapp:job-list' %}">Job</a> <span class="mx-2 slash">/</span>
-          <span class="text-white"><strong>{{ job.title }}</strong></span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-
-<section class="site-section">
+<section class="site-section" style="background-image: url('{% static 'images/bg_author.jpg' %}');">
   <div class="container">
     {% include 'messages.html' %}
 
@@ -36,10 +20,10 @@
           <div>
             <h2>{{ job.title }}</h2>
             <div>
-              <span class="ml-0 mr-2 mb-2"><span class="icon-briefcase mr-2"></span><a href="{{ job.url }}">{{ job.company_name }}</a></span>
-              <span class="m-2"><span class="icon-room mr-2"></span>{{ job.location }}</span>
+              <span class="ml-0 mr-2 mb-2"><span class="icon-briefcase mr-2 "></span><a href="{{ job.url }}" class="text-white">{{ job.company_name }}</a></span>
+              <span class="m-2 text-white"><span class="icon-room mr-2"></span>{{ job.location }}</span>
               <span class="m-2"><span class="icon-clock-o mr-2"></span>
-                <span class="text-primary">
+                <span class="text-white">
 
                   {% if job.job_type == '1' %}
                   Full Time
@@ -92,7 +76,7 @@
             {% is_job_already_applied job request.user as is_applied %}
               {% if is_applied %}
 
-              <span  class="btn btn-block btn-danger btn-md">Already Applied</span>
+              <span  class="btn btn-block btn-black bg-white text-black btn-md">Already Applied</span>
 
               {% else %}
 
@@ -100,7 +84,7 @@
                 {% csrf_token %}
                 <input type="hidden" name="job" value="{{ job.id }}">
 
-                <input type="submit" class="btn btn-block btn-primary btn-md" value="Apply Now" />
+                <input type="submit" class="btn btn-block bg-white text-black btn-md" value="Apply Now" />
               </form>
               {% endif %}
             
@@ -117,9 +101,9 @@
     </div>
     <div class="row">
       <div class="col-lg-8">
-        <div class="mb-5">
+        <div class="mb-5 text-white">
           <!-- <figure class="mb-5"><img src="images/job_single_img_1.jpg" alt="Image" class="img-fluid rounded"></figure> -->
-          <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span class="icon-align-left mr-3"></span>Job
+          <h3 class="h5 d-flex align-items-center mb-4 text-white"><span class="icon-align-left mr-3"></span>Job
             Description</h3>
           {{ job.description | safe }}
         </div>
@@ -171,7 +155,7 @@
               {% csrf_token %}
               <input type="hidden" name="job" value="{{ job.id }}">
 
-              <input type="submit" class="btn btn-block btn-primary btn-md" value="Apply Now" />
+              <input type="submit" class="btn btn-block bg-white text-black btn-md" value="Apply Now" />
             </form>
           </div>
           {% endif %}
@@ -187,7 +171,7 @@
                 {% csrf_token %}
                 <input type="hidden" name="job" value="{{ job.id }}">
 
-                <input type="submit" class="btn btn-block btn-primary btn-md" value="Apply Now" />
+                <input type="submit" class="btn btn-block bg-white text-black btn-md" value="Apply Now" />
               </form>
           </div> 
           {% endif %}
@@ -196,7 +180,7 @@
       </div>
       <div class="col-lg-4">
         <div class="bg-light p-3 border rounded mb-4">
-          <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Job Summary</h3>
+          <h3 class="text-black  mt-3 h5 pl-3 mb-3 ">Job Summary</h3>
           <ul class="list-unstyled pl-3 mb-0">
             <li class="mb-2"><strong class="text-black">Published on:</strong> {{ job.timestamp|date:"d M Y" }}</li>
             <li class="mb-2"><strong class="text-black">Employment Status:</strong>
@@ -216,12 +200,12 @@
         </div>
 
         <div class="bg-light p-3 border rounded">
-          <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Share</h3>
+          <h3 class="text-black  mt-3 h5 pl-3 mb-3 ">Share</h3>
           <div class="px-3">
-            <a href="#" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-facebook"></span></a>
-            <a href="#" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-twitter"></span></a>
-            <a href="#" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-linkedin"></span></a>
-            <a href="#" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-pinterest"></span></a>
+            <a href="#" class="pt-3 pb-3 pr-3 pl-0 text-black"><span class="icon-facebook"></span></a>
+            <a href="#" class="pt-3 pb-3 pr-3 pl-0 text-black"><span class="icon-twitter"></span></a>
+            <a href="#" class="pt-3 pb-3 pr-3 pl-0 text-black"><span class="icon-linkedin"></span></a>
+            <a href="#" class="pt-3 pb-3 pr-3 pl-0 text-black"><span class="icon-pinterest"></span></a>
           </div>
         </div>
 

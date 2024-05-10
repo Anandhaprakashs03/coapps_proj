@@ -34,7 +34,7 @@
         position: relative;
         right: auto; } }
   .site-navbar .site-menu-toggle {
-    color: #fff;
+    color: #000000;
     line-height: 0;
     font-size: 2.5rem;
     position: relative; }
@@ -51,7 +51,7 @@
     .site-navbar .site-navigation .site-menu {
       margin-bottom: 0; }
       .site-navbar .site-navigation .site-menu .active {
-        color: #fff;
+        color: #000000;
         display: inline-block;
         padding: 5px 20px; }
       .site-navbar .site-navigation .site-menu a {
@@ -62,11 +62,11 @@
         display: inline-block; }
         .site-navbar .site-navigation .site-menu > li > a {
           padding: 20px 20px !important;
-          color: rgba(255, 255, 255, 0.5);
+          color: rgba(0, 0, 0, 0.5);
           display: inline-block;
           text-decoration: none !important; }
           .site-navbar .site-navigation .site-menu > li > a:hover {
-            color: #fff; }
+            color: #000000; }
       .site-navbar .site-navigation .site-menu .has-children {
         position: relative; }
         .site-navbar .site-navigation .site-menu .has-children > a {
@@ -122,7 +122,7 @@
             -webkit-transition: 0s all;
             -o-transition: 0s all;
             transition: 0s all;
-            color: #343a40; }
+            color: #000000; }
             .site-navbar .site-navigation .site-menu .has-children .dropdown a.active {
               background: #ebeef0;
               color: #89ba16; }
@@ -148,7 +148,7 @@
               top: 0; }
             .site-navbar .site-navigation .site-menu .has-children .dropdown > li.has-children:hover > a, .site-navbar .site-navigation .site-menu .has-children .dropdown > li.has-children:active > a, .site-navbar .site-navigation .site-menu .has-children .dropdown > li.has-children:focus > a {
               background: #ebeef0;
-              color: #212529; }
+              color: #000000; }
         .site-navbar .site-navigation .site-menu .has-children:hover, .site-navbar .site-navigation .site-menu .has-children:focus, .site-navbar .site-navigation .site-menu .has-children:active {
           cursor: pointer; }
           .site-navbar .site-navigation .site-menu .has-children:hover > .dropdown, .site-navbar .site-navigation .site-menu .has-children:focus > .dropdown, .site-navbar .site-navigation .site-menu .has-children:active > .dropdown {
@@ -636,7 +636,7 @@ h1, h2, h3, h4 {
   box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.4); }
 
 .form-group label {
-  color: #000; }
+  color: #ffffff; }
 
 .editor {
   height: 375px; }

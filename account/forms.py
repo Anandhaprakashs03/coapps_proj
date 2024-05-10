@@ -1,13 +1,9 @@
 from django import forms
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate 
 from django.contrib.auth.forms import UserCreationForm
-
 from account.models import User
 
-
 class EmployeeRegistrationForm(UserCreationForm):
-
-
     def __init__(self, *args, **kwargs):
         UserCreationForm.__init__(self, *args, **kwargs)
         self.fields['gender'].required = True
@@ -43,11 +39,14 @@ class EmployeeRegistrationForm(UserCreationForm):
                 'placeholder': 'Confirm Password',
             }
         )
+        self.fields['gender'].widget.attrs.update(
+            {
+                'placeholder': 'gender',
+            }
+        )
 
     class Meta:
-
         model=User
-
         fields = ['first_name', 'last_name', 'email', 'password1', 'password2', 'gender']
 
     def clean_gender(self):
@@ -99,10 +98,9 @@ class EmployerRegistrationForm(UserCreationForm):
                 'placeholder': 'Confirm Password',
             }
         )
+
     class Meta:
-
         model=User
-
         fields = ['first_name', 'last_name', 'email', 'password1', 'password2',]
 
 
@@ -115,13 +113,8 @@ class EmployerRegistrationForm(UserCreationForm):
 
 
 class UserLoginForm(forms.Form):
-    email =  forms.EmailField(
-    widget=forms.EmailInput(attrs={ 'placeholder':'Email',})
-) 
-    password = forms.CharField(strip=False,widget=forms.PasswordInput(attrs={
-        
-        'placeholder':'Password',
-    }))
+    email =  forms.EmailField(widget=forms.EmailInput(attrs={ 'placeholder':'Email',})) 
+    password = forms.CharField(strip=False,widget=forms.PasswordInput(attrs={ 'placeholder':'Password',}))
 
     def clean(self, *args, **kwargs):
         email = self.cleaned_data.get("email")
@@ -146,9 +139,7 @@ class UserLoginForm(forms.Form):
         return self.user
 
 
-
 class EmployeeProfileEditForm(forms.ModelForm):
-
     def __init__(self, *args, **kwargs):
         super(EmployeeProfileEditForm, self).__init__(*args, **kwargs)
         self.fields['first_name'].widget.attrs.update(
@@ -165,5 +156,3 @@ class EmployeeProfileEditForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ["first_name", "last_name", "gender"]
-
-
